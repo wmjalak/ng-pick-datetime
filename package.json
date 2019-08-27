@@ -1,5 +1,5 @@
 {
-  "name": "ng-pick-datetime",
+  "name": "@wmjalak/ng-pick-datetime",
   "version": "8.0.0",
   "description": "Angular Date Time Picker",
   "keywords": [
@@ -13,7 +13,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DanielYKPan/date-time-picker.git"
+    "url": "https://github.com/wmjalak/ng-pick-datetime.git"
   },
   "jsnext:main": "picker.js",
   "module": "picker.js",
@@ -55,10 +55,10 @@
     "gulp-replace": "^0.6.1",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.1",
-    "gulp-typescript": "^3.2.3",
+    "gulp-typescript": "^5.0.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
-    "karma": "~1.7.0",
+    "karma": "^4.2.0",
     "karma-chrome-launcher": "~2.1.1",
     "karma-cli": "~1.0.1",
     "karma-coverage-istanbul-reporter": "^1.2.1",
@@ -67,7 +67,7 @@
     "merge2": "^1.2.0",
     "moment": "^2.24.0",
     "pixrem": "^4.0.1",
-    "protractor": "~5.1.2",
+    "protractor": "^6.0.0",
     "rollup": "^0.52.3",
     "rollup-plugin-alias": "^1.4.0",
     "rollup-plugin-commonjs": "^8.2.6",
