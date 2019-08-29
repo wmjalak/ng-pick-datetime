@@ -133,9 +133,15 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
         }
     }
 
+    private getLanguageLocale(loc: string): string {
+        // tslint:disable-next-line:typedef
+        const underscoreIndex = loc.indexOf("_");
+        return underscoreIndex > -1 ? loc.substring(0, underscoreIndex) : loc;
+    }
+
     public getYearName( date: Date ): string {
         if (SUPPORTS_INTL_API) {
-            const dtf = new Intl.DateTimeFormat(this.locale, {year: 'numeric', timeZone: 'utc'});
+            const dtf = new Intl.DateTimeFormat(this.getLanguageLocale(this.locale), {year: 'numeric', timeZone: 'utc'});
             return this.stripDirectionalityCharacters(this._format(dtf, date));
         }
         return String(this.getYear(date));
@@ -143,7 +149,7 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
 
     public getMonthNames( style: 'long' | 'short' | 'narrow' ): string[] {
         if (SUPPORTS_INTL_API) {
-            const dtf = new Intl.DateTimeFormat(this.locale, {month: style, timeZone: 'utc'});
+            const dtf = new Intl.DateTimeFormat(this.getLanguageLocale(this.locale), {month: style, timeZone: 'utc'});
             return range(12, i => this.stripDirectionalityCharacters(this._format(dtf, new Date(2017, i, 1))));
         }
         return DEFAULT_MONTH_NAMES[style];
@@ -151,7 +157,7 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
 
     public getDayOfWeekNames( style: 'long' | 'short' | 'narrow' ): string[] {
         if (SUPPORTS_INTL_API) {
-            const dtf = new Intl.DateTimeFormat(this.locale, {weekday: style, timeZone: 'utc'});
+            const dtf = new Intl.DateTimeFormat(this.getLanguageLocale(this.locale), {weekday: style, timeZone: 'utc'});
             return range(7, i => this.stripDirectionalityCharacters(
                 this._format(dtf, new Date(2017, 0, i + 1))));
         }
@@ -161,7 +167,7 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
 
     public getDateNames(): string[] {
         if (SUPPORTS_INTL_API) {
-            const dtf = new Intl.DateTimeFormat(this.locale, {day: 'numeric', timeZone: 'utc'});
+            const dtf = new Intl.DateTimeFormat(this.getLanguageLocale(this.locale), {day: 'numeric', timeZone: 'utc'});
             return range(31, i => this.stripDirectionalityCharacters(
                 this._format(dtf, new Date(2017, 0, i + 1))));
         }
@@ -302,7 +308,7 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
             }
 
             displayFormat = {...displayFormat, timeZone: 'utc'};
-            const dtf = new Intl.DateTimeFormat(this.locale, displayFormat);
+            const dtf = new Intl.DateTimeFormat(this.getLanguageLocale(this.locale), displayFormat);
             return this.stripDirectionalityCharacters(this._format(dtf, date));
         }
 
