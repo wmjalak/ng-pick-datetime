@@ -45,7 +45,7 @@
     "autoprefixer": "^7.2.3",
     "codelyzer": "^5.1.0",
     "core-js": "^3.2.1",
-    "gulp": "3.9.1",
+    "gulp": "4.0.2",
     "gulp-clean": "^0.3.2",
     "gulp-clean-css": "^3.9.0",
     "gulp-flatmap": "^1.0.0",
